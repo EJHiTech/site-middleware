@@ -1,0 +1,54 @@
+{
+    "family": "lucas-santana-middleware",
+    "containerDefinitions": [
+        {
+            "name": "lucas-santana-middleware",
+            "image": "279634266618.dkr.ecr.sa-east-1.amazonaws.com/lucas-santana/middleware:latest",
+            "cpu": 128,
+            "memory": 128,
+            "memoryReservation": 64,
+            "portMappings": [
+                {
+                    "name": "lucas-santana-middleware-8080-tcp",
+                    "containerPort": 8080,
+                    "hostPort": 0,
+                    "protocol": "tcp",
+                    "appProtocol": "http"
+                }
+            ],
+            "essential": true,
+            "environment": [],
+            "mountPoints": [],
+            "volumesFrom": [],
+            "secrets": [],
+            "logConfiguration": {
+                "logDriver": "awslogs",
+                "options": {
+                    "awslogs-create-group": "true",
+                    "awslogs-group": "/utfpr/ecs/lucas-santana-middleware",
+                    "awslogs-region": "sa-east-1",
+                    "awslogs-stream-prefix": "ecs"
+                },
+                "secretOptions": []
+            },
+            "systemControls": []
+        }
+    ],
+    "taskRoleArn": "arn:aws:iam::279634266618:role/ecsTaskExecutionRole",
+    "executionRoleArn": "arn:aws:iam::279634266618:role/ecsTaskExecutionRole",
+    "networkMode": "bridge",
+    "volumes": [],
+    "requiresCompatibilities": [
+        "EC2"
+    ],
+    "runtimePlatform": {
+        "cpuArchitecture": "ARM64",
+        "operatingSystemFamily": "LINUX"
+    },
+    "tags": [
+        {
+            "key": "utfpr-depto",
+            "value": "DAINF-CT"
+        }
+    ]
+}

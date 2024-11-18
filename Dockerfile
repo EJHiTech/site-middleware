@@ -11,7 +11,7 @@ COPY . /middleware-site
 RUN pip install -r requirements.txt
 
 # Expõe a porta do servidor Flask
-EXPOSE 5000
+EXPOSE 8080
 
 # Comando para rodar o servidor
 CMD ["python", "middleware.py"]

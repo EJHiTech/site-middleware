@@ -9,7 +9,7 @@ CORS(app)  # Permite acesso de qualquer origem
 
 # Configuração do logging
 logging.basicConfig(
-    filename='app.log',  # Nome do arquivo de log
+    filename='/dev/stdout',  # Nome do arquivo de log
     level=logging.DEBUG,  # Nível de log
     format='%(asctime)s - %(levelname)s - %(message)s'  # Formato da mensagem
 )
@@ -56,4 +56,4 @@ def test_route():
 
 if __name__ == '__main__':
     print('\n\n\nTESTE0\n\n\n')
-    app.run(host='0.0.0.0', port=5000, debug=True)
+    app.run(host='0.0.0.0', port=8080, debug=True)
