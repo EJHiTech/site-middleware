@@ -20,8 +20,6 @@ CLICKUP_API_BASE_URL = "https://api.clickup.com/api/v2/list/901305397122/task"
 
 @app.route('/publish-task', methods=['POST', 'GET', 'PUT', 'DELETE'])
 def proxy_request():
-    logging.debug('TESTE1: A função proxy_request foi chamada.')
-
     # Headers para a requisição ao ClickUp
     headers = {
         "Authorization": CLICKUP_API_KEY,
@@ -44,16 +42,16 @@ def proxy_request():
             params=params
         )
         logging.debug(f'Erro ClickUp: {clickup_response.json()}')
-        return jsonify(clickup_response.json()), clickup_response.status_code
+        logging.debug(jsonify(clickup_response.json()), clickup_response.status_code)
+
+        return jsonify('success'), clickup_response.status_code
     except Exception as e:
         logging.error(f'Erro: {str(e)}')
         return jsonify({"error": str(e)}), 500
 
 @app.route('/health', methods=['GET'])
 def test_route():
-    print('\n\nTESTE2 - Rota de teste acessada\n\n')
     return jsonify({"status": "OK"}), 200
 
 if __name__ == '__main__':
-    print('\n\n\nTESTE0\n\n\n')
     app.run(host='0.0.0.0', port=8080, debug=True)
