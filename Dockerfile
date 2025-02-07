@@ -13,5 +13,5 @@ RUN pip install -r requirements.txt
 # Expõe a porta do servidor Flask
 EXPOSE 8080
 
-# Comando para rodar o servidor
-CMD ["python", "middleware.py"]
+# Comando para rodar o servidor com Gunicorn
+CMD ["gunicorn", "-w", "4", "-b", "0.0.0.0:8080", "middleware:app"]

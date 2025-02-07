@@ -1,14 +1,14 @@
 services:
   flask-app:
-    container_name: lucas-santana-middleware
-    image: lucas-santana/middleware:latest
-    build: 
+    # container_name: lucas-santana-middleware
+    # image: lucas-santana/middleware:latest
+    build:
       context: .
       platforms:
-        - linux/arm64
+        - linux/amd64
     ports:
       - "8080:8080"
     env_file:
       - .env
-      - aws/aws.env
+      # - aws/aws.env
     restart: unless-stopped
